@@ -1,5 +1,14 @@
 <div>
-  <h4> List Component </h4>
+  <h1> Add  </h1>
   There are {{$ctrl.items.length}} items.
-  <list-item ng-repeat="item in $ctrl.items" item=item />
+
+  <div>
+    <h3> Stats </h3>
+    <stats-item ng-repeat="func in $ctrl.stats" mathFunc=func />
+  </div>
+
+  <div>
+    <list-item ng-repeat="item in $ctrl.items" item=item />
+  </div>
+
 </div>

@@ -1,5 +1,5 @@
 <div>
   {{$ctrl.item}}
-  <input placeholder={{$ctrl.inputPlaceHolder()}} ng-model="$ctrl.query" > </input>
-  <button ng-click="$ctrl.handleQuery()"> OK </button>
+  <input placeholder={{$ctrl.inputPlaceHolder()}} ng-model="$ctrl.query" ng-keyup="$event.keyCode === 13 ? $ctrl.handleQuery() : null"> </input>
+  <button ng-click="$ctrl.handleQuery()" {{$ctrl.result}}> OK </button>
 </div>

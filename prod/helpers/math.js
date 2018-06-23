@@ -34,3 +34,4 @@ module.exports = {
     power: power,
 }
 
+// module.exports.main = math;

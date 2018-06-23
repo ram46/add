@@ -4,6 +4,11 @@ angular.module('app')
     this.items = data;
     console.log(this.items)
   });
+
+  itemsService.getStats((data) => {
+    this.stats = data;
+    console.log(data)
+  })
 })
 .component('app', {
   bindings: {},
