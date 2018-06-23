@@ -4,7 +4,8 @@ angular.module('app')
     items: '<',
     stats: '<'
   },
-  controller: function() {
+  controller: function($scope) {
+    // debugger
   },
   templateUrl: '/templates/list.html'
 });

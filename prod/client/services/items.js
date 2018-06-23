@@ -17,6 +17,7 @@ angular.module('app')
     $http.post('/basic', {query:query})
     .then(function(data) {
       if(callback) {
+        console.log(data)
         callback(data.data);
       }
     })
@@ -83,8 +84,8 @@ angular.module('app')
     .then(function(data) {
       // debugger
       if(callback) {
-        callback(data)
-        // callback(['basic', 'factorial', 'sqrt','log','power'])
+        // callback(data)
+        callback(['basic', 'factorial', 'sqrt','log','power'])
       }
     })
     .catch(function(err){

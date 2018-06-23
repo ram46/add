@@ -1,18 +1,18 @@
+
+// debugger
 angular.module('app')
 .component('statsItem', {
 
-  controller: function() {
-    bindings: {
-      mathFunc: '<'
-    }
+  bindings: {
+    mathfunc: '<'
+  },
 
-    // this.getStats = () => {
+  controller: function($scope) {
+    // debugger
+  },
 
-    // }
-  }
+  templateUrl: '/templates/stats-item.html'
 
-},
+})
 
-templateUrl: '/templates/stats-item.html'
 
-)

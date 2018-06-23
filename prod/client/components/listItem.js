@@ -2,11 +2,15 @@
 
 angular.module('app')
 .component('listItem', {
+  // debugger
   bindings: {
     item: '<',
   },
+
   controller: function(itemsService) {
+    // debugger
     this.handleQuery = () => {
+
       console.log(this.item, this.query)
 
       if (this.item === 'basic') {
@@ -60,6 +64,6 @@ angular.module('app')
 
     }
   },
-
+ // debugger
   templateUrl: '/templates/list-item.html'
 });

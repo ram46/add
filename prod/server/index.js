@@ -19,6 +19,7 @@ var items = ['factorial', 'basic', 'power', 'log', 'sqrt']
 
 var util = require('../helpers/math.js');
 var parser = require('../helpers/parser.js');
+ var db = require('../database/index.js');
 
 app.get('/items', function (req, res) {
   res.end(JSON.stringify(items))
@@ -31,9 +32,19 @@ app.post('/basic', function(req, res){
 })
 
 app.post('/factorial', function(req, res){
-  console.log('hit the endpoint', req.body.query)
-  var result = calcFactorial(req.body.query)
-  res.end(JSON.stringify(result))
+  console.log('hit the factorial endpoint', req.body.query)
+
+  db.Add.findOne({mathFunc:'factorial', query:req.body.query}).then((d) => {
+    if (d) {
+      var result = parseInt(d.result)
+    } else {
+      var result = calcFactorial(req.body.query)
+    }
+    res.end(JSON.stringify(result))
+  })
+
+  // var result = calcFactorial(req.body.query)
+  // res.end(JSON.stringify(result))
 })
 
 app.post('/power', function(req, res){
@@ -57,7 +68,7 @@ app.post('/sqrt', function(req, res){
 
 app.get('/stats', function(req, res) {
   var result = calcStats()
-  debugger
+  // debugger
   res.end(JSON.stringify(['basic', 'factorial', 'sqrt','log','power']))
 })
 // app.get('/items', function (req, res) {
@@ -81,12 +92,14 @@ app.listen(3000, function() {
 var calcBasic = (query) => {
   [opA, operator, opB] = parser.basic(query);
   var result = util.basic([opA, operator, opB]);
+  db.Add.create({mathFunc: 'basic', query:query, result:result})
   return result;
 }
 
 var calcFactorial = (query) => {
    var parsed = parser.factorial(query);
    var result = util.factorial(parsed);
+   db.Add.create({mathFunc: 'factorial', query:query, result:result})
    return result;
 }
 
@@ -97,6 +110,7 @@ var calcLog = (query) => {
   // var base = parsed[1];
   [n, base] = parser.log(query)
   var result = util.log(n, base);
+  db.Add.create({mathFunc: 'log', query:query, result:result})
   return result;
 }
 
@@ -105,12 +119,14 @@ var calcPower = (query) => {
   // var exp = parser.power(input)[1];
   [n, exp] = parser.power(query)
   var result = util.power(n,exp);
+  db.Add.create({mathFunc: 'power', query:query, result:result})
   return result;
 }
 
 var calcSqrt = (query) => {
   var parsed = parser.squareRoot(query);
   var result = util.squareRoot(parsed);
+  db.Add.create({mathFunc: 'sqrt', query:query, result:result})
   return result;
 }
 
