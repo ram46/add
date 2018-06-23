@@ -19,7 +19,7 @@ var items = ['factorial', 'basic', 'power', 'log', 'sqrt']
 
 var util = require('../helpers/math.js');
 var parser = require('../helpers/parser.js');
- var db = require('../database/index.js');
+var db = require('../database/index.js');
 
 app.get('/items', function (req, res) {
   res.end(JSON.stringify(items))
@@ -27,8 +27,19 @@ app.get('/items', function (req, res) {
 
 app.post('/basic', function(req, res){
   console.log('hit the endpoint', req.body.query)
-  var result = calcBasic(req.body.query)
-  res.end(JSON.stringify(result));
+
+  db.Add.findOne({mathFunc:'basic', query:req.body.query}).then((d) => {
+    if (d) {
+      var result = parseInt(d.result)
+    } else {
+      var result = calcBasic(req.body.query)
+    }
+    res.end(JSON.stringify(result))
+  })
+
+
+  // var result = calcBasic(req.body.query)
+  // res.end(JSON.stringify(result));
 })
 
 app.post('/factorial', function(req, res){
@@ -49,20 +60,54 @@ app.post('/factorial', function(req, res){
 
 app.post('/power', function(req, res){
   console.log('hit the endpoint', req.body.query)
-  var result = calcPower(req.body.query);
-  res.end(JSON.stringify(result));
+
+  db.Add.findOne({mathFunc:'power', query:req.body.query}).then((d) => {
+    if (d) {
+      var result = parseInt(d.result)
+    } else {
+      var result = calcPower(req.body.query)
+    }
+    res.end(JSON.stringify(result))
+  })
+
+
+  // var result = calcPower(req.body.query);
+  // res.end(JSON.stringify(result));
 })
 
 app.post('/log', function(req, res){
   console.log('hit the endpoint', req.body.query)
-  var result = calcLog(req.body.query);
-  res.end(JSON.stringify(result));
+
+
+  db.Add.findOne({mathFunc:'log', query:req.body.query}).then((d) => {
+    if (d) {
+      var result = parseInt(d.result)
+    } else {
+      var result = calcLog(req.body.query)
+    }
+    res.end(JSON.stringify(result))
+  })
+
+  // var result = calcLog(req.body.query);
+  // res.end(JSON.stringify(result));
 })
 
 app.post('/sqrt', function(req, res){
   console.log('hit the endpoint', req.body.query)
-  var result = calcSqrt(req.body.query);
-  res.end(JSON.stringify(result));
+
+
+
+  db.Add.findOne({mathFunc:'sqrt', query:req.body.query}).then((d) => {
+    if (d) {
+      var result = parseInt(d.result)
+    } else {
+      var result = calcSqrt(req.body.query)
+    }
+    res.end(JSON.stringify(result))
+  })
+
+  // var result = calcSqrt(req.body.query);
+  // res.end(JSON.stringify(result));
 })
 
 
@@ -71,6 +116,10 @@ app.get('/stats', function(req, res) {
   // debugger
   res.end(JSON.stringify(['basic', 'factorial', 'sqrt','log','power']))
 })
+
+
+
+
 // app.get('/items', function (req, res) {
 //   items.selectAll(function(err, data) {
 //     if(err) {
