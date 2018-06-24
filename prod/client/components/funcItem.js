@@ -1,6 +1,6 @@
 
 angular.module('app')
-.component('listItem', {
+.component('funcItem', {
   bindings: {
     item: '<',
     stats: '=' //two-way binding is very important!!!
@@ -65,5 +65,5 @@ angular.module('app')
 
 
   },
-  templateUrl: '/templates/list-item.html'
+  templateUrl: '/templates/func-item.html'
 });
