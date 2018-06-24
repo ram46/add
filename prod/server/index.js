@@ -37,10 +37,6 @@ app.post('/basic', function(req, res){
     }
     res.end(JSON.stringify(result))
   })
-
-
-  // var result = calcBasic(req.body.query)
-  // res.end(JSON.stringify(result));
 })
 
 app.post('/factorial', function(req, res){

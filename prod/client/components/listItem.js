@@ -1,51 +1,40 @@
-// import util from '../../helpers/math.js'
 
 angular.module('app')
 .component('listItem', {
-  // debugger
   bindings: {
     item: '<',
-    updatestats: '&'
+    stats: '=' //two-way binding is very important!!!
   },
 
-  controller: function(itemsService) {
-    // debugger
-    this.handleQuery = () => {
+  controller: function($scope, itemsService) {
 
-      console.log(this.item, this.query)
+    this.handleQuery = () => {
 
       if (this.item === 'basic') {
         itemsService.basic(this.query, (result) => {
           this.query = result;
-          // this.stats.append('')
-          console.log('In list item component', result)
+          this.changestats()
         })
       }
 
       if (this.item === 'factorial') {
         itemsService.factorial(this.query, (result) => {
           this.query = result;
-          debugger
-          this.updatestats()
-          // itemsService.getStats((data) => {
-          //   console.log('okkkkkk')
-          //   this.stats = data;
-          // })
-          console.log('In list item component', result)
+          this.changestats()
         })
       }
 
       if (this.item === 'log') {
         itemsService.log(this.query, (result) => {
           this.query = result;
-          console.log(result)
+          this.changestats()
         })
       }
 
       if (this.item === 'power') {
         itemsService.power(this.query, (result) => {
           this.query = result;
-          console.log(result)
+          this.changestats()
         })
       }
 
@@ -53,10 +42,9 @@ angular.module('app')
       if (this.item === 'sqrt') {
         itemsService.sqrt(this.query, (result) => {
           this.query = result
-          console.log(result)
+          this.changestats()
         })
       }
-
 
     }
 
@@ -69,7 +57,13 @@ angular.module('app')
     }
 
 
+    this.changestats = () => {
+      itemsService.getStats((data) => {
+        this.stats = data;
+      })
+    }
+
+
   },
- // debugger
   templateUrl: '/templates/list-item.html'
 });

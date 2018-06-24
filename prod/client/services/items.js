@@ -1,3 +1,4 @@
+
 angular.module('app')
 .service('itemsService', function($http) {
   this.getAll = function(callback) {
@@ -85,7 +86,6 @@ angular.module('app')
       // debugger
       if(callback) {
         callback(data.data)
-        // callback(['basic', 'factorial', 'sqrt','log','power'])
       }
     })
     .catch(function(err){
@@ -93,8 +93,6 @@ angular.module('app')
     })
 
   }
-
-
 
 });
 

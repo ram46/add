@@ -5,15 +5,8 @@ angular.module('app')
     stats: '<'
   },
   controller: function($scope) {
-    this.updatestats = () => {
-      // this.stats = data
-      // var self = this
-      debugger
-        itemsService.getStats((data) => {
-            console.log('okkkkkk')
-            this.stats = data;
-          })
-    }
+    // good to have for debugging (even empty controller funcs)
+    // and check the $scope e.g. $scope.$parent.$ctrl etc..
   },
   templateUrl: '/templates/list.html'
 });

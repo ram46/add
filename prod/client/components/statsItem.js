@@ -9,7 +9,6 @@ angular.module('app')
 
   controller: function($scope) {
     // debugger
-
   },
 
   templateUrl: '/templates/stats-item.html'
