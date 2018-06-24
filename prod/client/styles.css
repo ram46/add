@@ -1,0 +1,38 @@
+body {
+  background-color: black;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter";
+  color: lightgrey;
+}
+
+button {
+  background-color: black;
+  color: lightgrey;
+  border-radius: 8px;
+  border-width: 6px
+}
+
+
+input {
+  background: black;
+  /*border: 1px solid red;*/
+  padding: 12px 20px;
+  border:none;
+  border-bottom: 1px solid red;
+  color: #a6aebc;
+  font-size: 15px
+}
+
+
+#stats {
+  width: 320px;
+  padding: 5px;
+  border: 2px solid gray;
+  margin: 0;
+  text-align: right;
+}
+
+
+
+
+
+
