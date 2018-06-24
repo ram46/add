@@ -102,7 +102,8 @@ app.get('/stats', function(req, res) {
     })
   })
 
-app.listen(3000, function() {
-  console.log('listening on port 3000!');
+var host = '0.0.0.0'
+app.listen(process.env.PORT, function() {
+  console.log(`listening on port ${process.env.PORT}!`);
 });
 
