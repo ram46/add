@@ -7,7 +7,6 @@ angular.module('app')
 
   itemsService.getStats((data) => {
     this.stats = data;
-    // debugger
     console.log('this is from getStats service',this.stats)
   })
 })

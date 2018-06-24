@@ -5,7 +5,15 @@ angular.module('app')
     stats: '<'
   },
   controller: function($scope) {
-    // debugger
+    this.updatestats = () => {
+      // this.stats = data
+      // var self = this
+      debugger
+        itemsService.getStats((data) => {
+            console.log('okkkkkk')
+            this.stats = data;
+          })
+    }
   },
   templateUrl: '/templates/list.html'
 });

@@ -84,8 +84,8 @@ angular.module('app')
     .then(function(data) {
       // debugger
       if(callback) {
-        // callback(data)
-        callback(['basic', 'factorial', 'sqrt','log','power'])
+        callback(data.data)
+        // callback(['basic', 'factorial', 'sqrt','log','power'])
       }
     })
     .catch(function(err){

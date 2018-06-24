@@ -4,11 +4,11 @@
 
   <div>
     <h3> Stats </h3>
-    <stats-item ng-repeat="mathfunc in $ctrl.stats" mathFunc=mathfunc />
+    <stats-item ng-repeat="func in $ctrl.stats" mathFunc=func />
   </div>
 
   <div>
-    <list-item ng-repeat="item in $ctrl.items" item=item />
+    <list-item ng-repeat="item in $ctrl.items " item=item updatestats=$ctrl.updatestats />
   </div>
 
 </div>

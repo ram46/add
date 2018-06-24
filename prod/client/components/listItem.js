@@ -5,6 +5,7 @@ angular.module('app')
   // debugger
   bindings: {
     item: '<',
+    updatestats: '&'
   },
 
   controller: function(itemsService) {
@@ -16,6 +17,7 @@ angular.module('app')
       if (this.item === 'basic') {
         itemsService.basic(this.query, (result) => {
           this.query = result;
+          // this.stats.append('')
           console.log('In list item component', result)
         })
       }
@@ -23,6 +25,12 @@ angular.module('app')
       if (this.item === 'factorial') {
         itemsService.factorial(this.query, (result) => {
           this.query = result;
+          debugger
+          this.updatestats()
+          // itemsService.getStats((data) => {
+          //   console.log('okkkkkk')
+          //   this.stats = data;
+          // })
           console.log('In list item component', result)
         })
       }
@@ -60,9 +68,7 @@ angular.module('app')
       if (this.item === 'basic') return '5+4'
     }
 
-    this.calcBasic = () => {
 
-    }
   },
  // debugger
   templateUrl: '/templates/list-item.html'

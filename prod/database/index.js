@@ -10,6 +10,7 @@ var addSchema = mongoose.Schema({
   mathFunc: String,
   query: String,
   result: String,
+  count: Number
 })
 
 
