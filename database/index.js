@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect(`mongodb://${process.env.DBHOST}/${process.env.DBNAME}`);
+mongoose.connect(`mongodb://${process.env.DBHOST}:${process.env.DBPORT}/${process.env.DBNAME}`);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
