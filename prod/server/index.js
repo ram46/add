@@ -27,11 +27,11 @@ app.get('/items', function (req, res) {
 
 
 app.post('/basic', function(req, res){
-  console.log('hit the endpoint', req.body.query)
 
   db.Add.findOne({mathFunc:'basic', query:req.body.query}).then((d) => {
     if (d) {
-      var result = parseInt(d.result)
+      var result = Number(d.result);
+      updateStats(d);
     } else {
       var result = calcBasic(req.body.query)
     }
@@ -40,11 +40,10 @@ app.post('/basic', function(req, res){
 })
 
 app.post('/factorial', function(req, res){
-  console.log('hit the factorial endpoint', req.body.query)
 
   db.Add.findOne({mathFunc:'factorial', query:req.body.query}).then((d) => {
     if (d) {
-      var result = parseInt(d.result);
+      var result = Number(d.result);
       updateStats(d);
     } else {
       var result = calcFactorial(req.body.query)
@@ -55,47 +54,37 @@ app.post('/factorial', function(req, res){
 })
 
 app.post('/power', function(req, res){
-  console.log('hit the endpoint', req.body.query)
 
   db.Add.findOne({mathFunc:'power', query:req.body.query}).then((d) => {
     if (d) {
-      var result = parseInt(d.result)
+      var result = Number(d.result)
     } else {
       var result = calcPower(req.body.query)
     }
     res.end(JSON.stringify(result))
   })
 
-
-  // var result = calcPower(req.body.query);
-  // res.end(JSON.stringify(result));
 })
 
 app.post('/log', function(req, res){
-  console.log('hit the endpoint', req.body.query)
-
 
   db.Add.findOne({mathFunc:'log', query:req.body.query}).then((d) => {
     if (d) {
-      var result = parseInt(d.result)
+      var result = Number(d.result);
+      updateStats(d);
     } else {
       var result = calcLog(req.body.query)
     }
     res.end(JSON.stringify(result))
   })
 
-  // var result = calcLog(req.body.query);
-  // res.end(JSON.stringify(result));
 })
 
 app.post('/sqrt', function(req, res){
-  console.log('hit the endpoint', req.body.query)
-
-
 
   db.Add.findOne({mathFunc:'sqrt', query:req.body.query}).then((d) => {
     if (d) {
-      var result = parseInt(d.result)
+      var result = Number(d.result)
 
     } else {
       var result = calcSqrt(req.body.query)
@@ -103,38 +92,12 @@ app.post('/sqrt', function(req, res){
     res.end(JSON.stringify(result))
   })
 
-  // var result = calcSqrt(req.body.query);
-  // res.end(JSON.stringify(result));
 })
 
 
 app.get('/stats', function(req, res) {
 
   var stats = []
-
-  // db.Add.find({mathFunc:'factorial'}, function(err, result){
-  //   console.log('IN stats route now', result.length)
-  //   var counter = ['factorial', 0];
-  //   for (var i = 0; i < result.length; i++) {
-  //     console.log(result[i].count)
-  //     counter[1] += result[i].count;
-  //   }
-  //   console.log(counter)
-
-  // aggregator('factorial', (r) => {
-  //   stats.push(r)
-  //   // console.log('sdasasa', r)
-  // })
-  // res.send(stats)
-
-
-
-  // aggregator('factorial')
-  // .then((factorialCount) => {
-  //   console.log('hererererererer', factorialCount)
-  //   stats.push(factorialCount);
-  // })
-
 
   Promise.all([aggregator('factorial'), aggregator('basic'), aggregator('power'), aggregator('log'), aggregator('sqrt')]).then(function(stats) {
         console.log(stats)
@@ -194,21 +157,6 @@ function updateStats(doc) {
 
 function aggregator(field, cb) {
 
-  // db.Add.find({mathFunc:field}, function(err, result){
-  //   if (err) {
-  //     console.log(err)
-  //   }
-
-  //   if (result && result.length > 0) {
-  //     var counter = [field, 0];
-  //     for (var i = 0; i < result.length; i++) {
-  //       console.log(result[i].count)
-  //       counter[1] += result[i].count;
-  //     }
-  //     cb(counter)
-  //   }
-  // })
-
   return new Promise((resolve, reject) => {
 
     db.Add.find({mathFunc:field}, function(err, result){
@@ -227,20 +175,3 @@ function aggregator(field, cb) {
   })
 }
 
-  // return counter
-
-  // db.Add.find({mathFunc:field}, function(err, result){
-  //   if (err) {
-  //     console.log(err)
-  //   }
-
-  //   if (result && result.length > 0) {
-  //     var counter = [field, 0];
-  //     for (var i = 0; i < result.length; i++) {
-  //       console.log(result[i].count)
-  //       counter[1] += result[i].count;
-  //     }
-  //     cb(counter)
-  //   }
-  // })
-// }
