@@ -12,6 +12,13 @@ app.use(bodyParser.json())
 
 var SERVER_PORT =  process.env.PORT || 3000;
 
+
+app.listen(SERVER_PORT, function() {
+  console.log(`listening on port ${SERVER_PORT}!`);
+});
+
+
+
 var items = ['factorial', 'basic', 'power', 'log', 'sqrt']
 
 app.get('/items', function (req, res) {
@@ -99,8 +106,4 @@ app.get('/stats', function(req, res) {
       console.log(reason)
     })
   })
-
-app.listen(SERVER_PORT, function() {
-  console.log(`listening on port ${SERVER_PORT}!`);
-});
 
