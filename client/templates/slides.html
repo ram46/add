@@ -1,0 +1,30 @@
+<h1> UI </h1>
+This is it!
+
+<h1> API </h1>
+Let's take a look
+
+<pre>
+
+curl -X POST -H "Content-Type: application/json" -d '{"query":"3b10"}' https://mvpadd.herokuapp.com/log
+curl -X POST -H "Content-Type: application/json" -d '{"query":"3^5"}' https://mvpadd.herokuapp.com/power
+curl -X POST -H "Content-Type: application/json" -d '{"query":"144"}' https://mvpadd.herokuapp.com/sqrt
+curl -X POST -H "Content-Type: application/json" -d '{"query":"13"}' https://mvpadd.herokuapp.com/factorial
+curl -X POST -H "Content-Type: application/json" -d '{"query":"13*12"}' https://mvpadd.herokuapp.com/basic
+
+OR
+
+request.post({url: 'https://mvpadd.herokuapp.com/factorial', json: {query: '3'}}, function(err, res, body) { console.log(body) })
+
+
+</pre>
+
+<h2> lesson learned </h2>
+
+
+<h2> pain points </h2>
+<!-- <input ng-model="cmd" ng-keyup="$ctrl.demoapi(cmd)" /> -->
+
+<h2> THE most difficult part? </h2>
+
+<button ng-click="$ctrl.reveal()"> ? ? ? ? ? ? </button>

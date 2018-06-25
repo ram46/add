@@ -7,6 +7,8 @@ angular.module('app')
   controller: function($scope) {
     // good to have for debugging (even empty controller funcs)
     // and check the $scope e.g. $scope.$parent.$ctrl etc..
+
+    // this.pullslides = () => {}
   },
   templateUrl: '/templates/add.html'
 });
