@@ -3,20 +3,14 @@ var bodyParser = require('body-parser');
 var db = require('../database/index.js');
 var helper = require('../helpers/calc.js');
 
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-// var items = require('../database-mysql');
-// var items = require('../database-mongo');
-
 var app = express();
 
-// UNCOMMENT FOR REACT
-// app.use(express.static(__dirname + '/../react-client/dist'));
-
-// UNCOMMENT FOR ANGULAR
 app.use(express.static(__dirname + '/../client'));
 app.use(express.static(__dirname + '/../node_modules'));
 app.use(bodyParser.json())
 
+
+var SERVER_PORT =  process.env.PORT || 3000;
 
 var items = ['factorial', 'basic', 'power', 'log', 'sqrt']
 
@@ -106,7 +100,7 @@ app.get('/stats', function(req, res) {
     })
   })
 
-app.listen(3000, function() {
-  console.log('listening on port 3000!');
+app.listen(SERVER_PORT, function() {
+  console.log(`listening on port $SERVER_PORT}!`);
 });
 

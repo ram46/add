@@ -1,6 +1,27 @@
+
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/add');
+try {
+  var config = require('../config.js')
+}
+
+catch(e) {
+  var config = {
+    DBHOST: process.env.DBHOST,
+    DBUSER: process.env.DBUSER,
+    DBPASS: process.env.DBPASS,
+    DBPORT: process.env.DBPORT,
+    DBNAME: process.env.DBNAME
+  }
+}
+
+
+// mongoose.connect(`mongodb://${config.DBHOST}/${config.DBPORT}`);
+
+// mongoose.connect(`mongodb://${process.env.DBUSER}:${process.env.DBPASS}@${process.env.DBHOST}:${process.env.DBPORT}/${process.env.DBNAME}`);
+
+mongoose.connect(`mongodb://${config.DBUSER}:${config.DBPASS}@${config.DBHOST}:${config.DBPORT}/${config.DBNAME}`);
+
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
