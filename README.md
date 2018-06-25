@@ -45,8 +45,9 @@ request({url: 'https://mvpadd.herokuapp.com/factorial', method: 'POST', body: {q
 2- Git clone or download the repo
 3- Change the working directory to the add folder.
   a) $ mongod --dbpath database/db (in tab 1)
-  b) $ npm run server-dev.         (in tab 2)
+  b) $ npm run server         (in tab 2)
   c) (optional) $ mongodb://127.0.0.1:27017/ (to get the shell - good for quick commands and troubleshooting)
+  d) $ npm run test
 
 ```
 

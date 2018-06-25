@@ -16,10 +16,6 @@ catch(e) {
 }
 
 
-// mongoose.connect(`mongodb://${config.DBHOST}/${config.DBPORT}`);
-
-// mongoose.connect(`mongodb://${process.env.DBUSER}:${process.env.DBPASS}@${process.env.DBHOST}:${process.env.DBPORT}/${process.env.DBNAME}`);
-
 mongoose.connect(`mongodb://${config.DBUSER}:${config.DBPASS}@${config.DBHOST}:${config.DBPORT}/${config.DBNAME}`);
 
 var db = mongoose.connection;
