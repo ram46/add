@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 //mongoose.connect(`mongodb://${process.env.DBHOST}:${process.env.DBPORT}/${process.env.DBNAME}`);
 
-mongoose.connect('mongodb://username:password@host:port/database?options...');
+// mongoose.connect('mongodb://username:password@host:port/database?options...');
 mongoose.connect(`mongodb://${process.env.DBUSER}:${process.env.DBPASS}@${process.env.DBHOST}:${process.env.DBPORT}/${process.env.DBNAME}`);
 
 var db = mongoose.connection;
