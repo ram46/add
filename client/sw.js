@@ -7,7 +7,9 @@ self.addEventListener('install', function(e) {
        // '/services/',
        // '/angular/',
        // 'templates/',
-       '/components/add.js',
+       '/items',    // cache endpoint
+       '/stats',    // cache endpoint
+       '/components/add.js',   // cache file add.js
        '/components/app.js',
        '/components/funcItem.js',
        '/components/slides.js',
