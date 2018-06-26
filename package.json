@@ -14,6 +14,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
     "jquery": "^3.1.1",
+    "lighthouse": "^2.9.4",
     "mongoose": "^4.8.6",
     "mysql": "^2.13.0"
   },

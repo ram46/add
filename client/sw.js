@@ -2,6 +2,7 @@ self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('pwa-add-store').then(function(cache) {
      return cache.addAll([
+       '/',
        '/sw.js',
        '/styles.css',
        '/index.js',
