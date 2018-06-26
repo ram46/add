@@ -6,7 +6,6 @@ self.addEventListener('install', function(e) {
        // '/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/index.html',
        // '/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/index.js',
        // '/learning-area/javascript/apis/client-side-storage/cache-sw/video-store-offline/style.css'
-       '/sw.js',
        '/styles.css',
        '/index.js',
        '/index.html',
