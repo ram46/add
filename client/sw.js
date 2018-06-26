@@ -4,8 +4,6 @@ self.addEventListener('install', function(e) {
     // cache all endpoints and files you want the app to laod offline
      return cache.addAll([
        '/',
-       '/items',
-       '/stats',
        '/components/add.js',
        '/components/app.js',
        '/components/funcItem.js',
