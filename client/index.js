@@ -2,7 +2,7 @@
 
 angular.module('app', []);
 
-window.onload = function() {
+// window.onload = function() {
 
 // angular.module('app', []);
   if('serviceWorker' in navigator) {
@@ -14,4 +14,4 @@ window.onload = function() {
                 console.log(err)
              })
   }
-}
+// }
