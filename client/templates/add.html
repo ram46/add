@@ -1,24 +1,30 @@
 <div>
   <h1> A-d-d  </h1>
 
-  <div>
+  slides: <input type="checkbox" ng-model="checked" aria-label="Toggle ngShow" ><br />
+  <div class="check-element animate-show-hide" ng-show="checked">
+
+    <pre class="hideme" ng-class="{showme: checked}">
+      #####    ######   #####     ######    #  #####    ######  #     #    #    #
+      #        #    #   #    #    #         #  #        #       #     #    ##   #
+      #        #    #   #    #    ###       #  #####    ####    #     #    # #  #
+      #        #    #   #    #    #         #      #    #       #     #    #  # #
+      #####    ######   #####     ######    #  #####    #       #######    #   ##
+    </pre>
+
+    <slides />
+    <!-- {{$ctrl.pullslides()}} -->
+
+  </div>
+
+  <div ng-class="{hideme: checked}">
     <h3> Stats </h3>
     <stats-item ng-repeat="func in $ctrl.stats" mathFunc=func />
   </div>
 
-  <div>
+  <div ng-class="{hideme: checked}">
     <func-item stats=$ctrl.stats ng-repeat="item in $ctrl.items" item=item />
   </div>
-
-   <pre>
-
-#####    ######   #####     ######    #  #####    ######  #     #    #    #
-#        #    #   #    #    #         #  #        #       #     #    ##   #
-#        #    #   #    #    ###       #  #####    ####    #     #    # #  #
-#        #    #   #    #    #         #      #    #       #     #    #  # #
-#####    ######   #####     ######    #  #####    #       #######    #   ##
-
-  </pre>
 
 </div>
 

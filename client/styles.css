@@ -33,6 +33,14 @@ input {
 
 
 
+.hideme {
+  opacity: 0;
+}
 
+.showme {
+  opacity: 1;
+}
 
-
+.black {
+  color: black;
+}
