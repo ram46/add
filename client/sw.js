@@ -3,10 +3,10 @@ self.addEventListener('install', function(e) {
    caches.open('pwa-add-store').then(function(cache) {
      return cache.addAll([
        '/',
-       '/components/',
-       '/services/',
-       '/angular/',
-       'templates/',
+       // '/components/',
+       // '/services/',
+       // '/angular/',
+       // 'templates/',
        '/components/add.js',
        '/components/app.js',
        '/components/funcItem.js',
