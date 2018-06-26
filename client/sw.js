@@ -3,10 +3,9 @@ self.addEventListener('install', function(e) {
    caches.open('pwa-add-store').then(function(cache) {
      return cache.addAll([
        '/',
-       '/sw.js',
-       '/styles.css',
        '/index.js',
        '/index.html',
+       '/styles.css'
      ]);
    })
  );
