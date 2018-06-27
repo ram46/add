@@ -1,4 +1,5 @@
 self.addEventListener('install', function(e) {
+console.log('installing...')
  e.waitUntil(
    caches.open('pwa-add-store').then(function(cache) {
     // cache all endpoints and files you want the app to laod offline
