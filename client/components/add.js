@@ -16,7 +16,6 @@ angular.module('app')
       this.data = [];
       this.options = {
         circumference: 2 * Math.PI,
-        radius: 1
       }
       if (this.stats) {
         for (var i = 0; i < this.stats.length; i++) {
