@@ -44,3 +44,12 @@ input {
 .black {
   color: black;
 }
+
+#doughnut {
+  text-align: right;
+}
+
+.debug {
+  background-color: white;
+}
+

@@ -1,10 +1,12 @@
 
 
-angular.module('app', []);
+angular.module('app', ['chart.js']);
 
+
+// Below is the code related to progressive web app only.
 window.onload = function() {
 
-// angular.module('app', []);
+angular.module('app', []);
   if('serviceWorker' in navigator) {
     navigator.serviceWorker
              .register('/sw.js')

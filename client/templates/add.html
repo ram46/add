@@ -10,6 +10,8 @@
       #        #    #   #    #    ###       #  #####    ####    #     #    # #  #
       #        #    #   #    #    #         #      #    #       #     #    #  # #
       #####    ######   #####     ######    #  #####    #       #######    #   ##
+
+
     </pre>
 
     <slides />
@@ -26,5 +28,9 @@
     <func-item stats=$ctrl.stats ng-repeat="item in $ctrl.items" item=item />
   </div>
 
-</div>
 
+
+  <canvas id="doughnut" class="chart chart-doughnut q" chart-data="$ctrl.data" chart-labels="$ctrl.labels" chart-options="$ctrl.options" width="1000" height="150">
+  </canvas>
+
+</div>

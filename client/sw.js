@@ -1,7 +1,9 @@
+// For Progressive Web App
+
 self.addEventListener('install', function(e) {
 console.log('installing...')
  e.waitUntil(
-   caches.open('pwa-add-store').then(function(cache) {
+   caches.open('mvpadd-pwa-cache').then(function(cache) {
     // cache all endpoints and files you want the app to laod offline
      return cache.addAll([
        '/',

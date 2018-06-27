@@ -63,7 +63,6 @@ angular.module('app')
       })
     }
 
-
   },
   templateUrl: '/templates/func-item.html'
 });
