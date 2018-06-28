@@ -26,13 +26,14 @@ app.get('/login', function(req, res) {
 
 
 app.get('/auth', function(req, res) {
-  console.log('HELLLOOOO', req.body)
-  res.send('hhh')
+  console.log('HELLLOOOO', req.body.code)
+  var code = req.body.code
+  app.post('https://github.com/login/oauth/access_token',function(req, res) {
+    res.send({ code: code , client_id: '1a87845988b42de82d4c'});
+  })
 })
 
-// app.post('https://github.com/login/oauth/access_token',function(req, res) {
-//   console.log('sdsdsds')
-// })
+
 
 // ###########
 
