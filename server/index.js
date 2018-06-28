@@ -27,8 +27,12 @@ app.get('/login', function(req, res) {
 
 app.get('/auth', function(req, res) {
   console.log('HELLLOOOO', req.body)
-  res.send(JSON.stringify(req.body))
+  res.send('hhh')
 })
+
+// app.post('https://github.com/login/oauth/access_token',function(req, res) {
+//   console.log('sdsdsds')
+// })
 
 // ###########
 
