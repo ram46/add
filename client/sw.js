@@ -1,37 +1,37 @@
-// For Progressive Web App
+// // For Progressive Web App
 
-self.addEventListener('install', function(e) {
-console.log('installing...')
- e.waitUntil(
-   caches.open('mvpadd-pwa-cache').then(function(cache) {
-    // cache all endpoints and files you want the app to laod offline
-     return cache.addAll([
-       '/',
-       '/components/add.js',
-       '/components/app.js',
-       '/components/funcItem.js',
-       '/components/slides.js',
-       '/components/statsItem.js',
-       '/services/items.js',
-       '/angular/angular.js',
-       '/templates/add.html',
-       '/templates/app.html',
-       '/templates/func-item.html',
-       '/templates/slides.html',
-       '/templates/stats-item.html',
-       '/index.js',
-       '/index.html',
-       '/styles.css'
-     ]);
-   })
- );
-});
+// self.addEventListener('install', function(e) {
+// console.log('installing...')
+//  e.waitUntil(
+//    caches.open('mvpadd-pwa-cache').then(function(cache) {
+//     // cache all endpoints and files you want the app to laod offline
+//      return cache.addAll([
+//        '/',
+//        '/components/add.js',
+//        '/components/app.js',
+//        '/components/funcItem.js',
+//        '/components/slides.js',
+//        '/components/statsItem.js',
+//        '/services/items.js',
+//        '/angular/angular.js',
+//        '/templates/add.html',
+//        '/templates/app.html',
+//        '/templates/func-item.html',
+//        '/templates/slides.html',
+//        '/templates/stats-item.html',
+//        '/index.js',
+//        '/index.html',
+//        '/styles.css'
+//      ]);
+//    })
+//  );
+// });
 
-self.addEventListener('fetch', function(e) {
-  console.log(e.request.url);
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      return response || fetch(e.request);
-    })
-  );
-});
+// self.addEventListener('fetch', function(e) {
+//   console.log(e.request.url);
+//   e.respondWith(
+//     caches.match(e.request).then(function(response) {
+//       return response || fetch(e.request);
+//     })
+//   );
+// });

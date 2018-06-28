@@ -18,6 +18,20 @@ app.listen(SERVER_PORT, function() {
 });
 
 
+// ##########
+
+app.get('/', function(req, res) {
+  res.redirect('https://github.com/login/oauth/authorize?client_id=1a87845988b42de82d4c&redirect_uri=https://mvpadd.herokuapp.com/path');
+})
+
+
+app.get('/auth', function(req, res) {
+  console.log('HELLLOOOO', req.body)
+  res.send(JSON.stringify(req.body))
+})
+
+// ###########
+
 
 var items = ['factorial', 'basic', 'power', 'log', 'sqrt']
 
