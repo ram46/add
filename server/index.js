@@ -21,7 +21,7 @@ app.listen(SERVER_PORT, function() {
 // ##########
 
 app.get('/login', function(req, res) {
-  res.redirect('https://github.com/login/oauth/authorize?client_id=1a87845988b42de82d4c&redirect_uri=https://mvpadd.herokuapp.com/path');
+  res.redirect('https://github.com/login/oauth/authorize?client_id=1a87845988b42de82d4c&redirect_uri=https://mvpadd.herokuapp.com/oath');
 })
 
 
