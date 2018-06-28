@@ -8,7 +8,7 @@ var app = express();
 app.use(express.static(__dirname + '/../client'));
 app.use(express.static(__dirname + '/../node_modules'));
 app.use(bodyParser.json())
-app.use(logger());
+
 
 var SERVER_PORT =  process.env.PORT || 3000;
 
