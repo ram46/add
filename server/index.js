@@ -8,7 +8,7 @@ var app = express();
 app.use(express.static(__dirname + '/../client'));
 app.use(express.static(__dirname + '/../node_modules'));
 app.use(bodyParser.json())
-
+app.use(logger());
 
 var SERVER_PORT =  process.env.PORT || 3000;
 
@@ -26,8 +26,8 @@ app.get('/login', function(req, res) {
 
 
 app.get('/auth', function(req, res) {
-  console.log('HELLLOOOO', req.params.code)
-  var code = req.params.code
+  console.log('HELLLOOOO', req.query.['code'])
+  var code = req.query.code;
   app.post('https://github.com/login/oauth/access_token',function(req, res) {
     res.send({ code: code , client_id: '1a87845988b42de82d4c'});
   })
