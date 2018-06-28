@@ -26,8 +26,8 @@ app.get('/login', function(req, res) {
 
 
 app.get('/auth', function(req, res) {
-  console.log('HELLLOOOO', req.body.code)
-  var code = req.body.code
+  console.log('HELLLOOOO', req.params.code)
+  var code = req.params.code
   app.post('https://github.com/login/oauth/access_token',function(req, res) {
     res.send({ code: code , client_id: '1a87845988b42de82d4c'});
   })
