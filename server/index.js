@@ -21,24 +21,20 @@ app.listen(SERVER_PORT, function() {
 
 // ##########
 
+// https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
+
 app.get('/login', function(req, res) {
   res.redirect('https://github.com/login/oauth/authorize?client_id=1a87845988b42de82d4c&redirect_uri=https://mvpadd.herokuapp.com/auth');
 })
 
 
 app.get('/auth', function(req, res) {
-  console.log('HELLLOOOO', req.query.code)
   var code = req.query.code;
 
   request.post({url:'https://github.com/login/oauth/access_token', cliend_id: '1a87845988b42de82d4c', client_secret:process.env.client_secret_oath, code:code}, function(e, r, body) {
-      console.log(body)
+      console.log(r)
       res.end('posted')
   })
-
-
-  // app.post('https://github.com/login/oauth/access_token',function(req, res) {
-  //   res.send({ code: code , client_id: '1a87845988b42de82d4c'});
-  // })
 })
 
 
