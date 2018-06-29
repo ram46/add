@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('../database/index.js');
 var helper = require('../helpers/calc.js');
+var request = require('request')
 
 var app = express();
 
@@ -28,9 +29,16 @@ app.get('/login', function(req, res) {
 app.get('/auth', function(req, res) {
   console.log('HELLLOOOO', req.query.code)
   var code = req.query.code;
-  app.post('https://github.com/login/oauth/access_token',function(req, res) {
-    res.send({ code: code , client_id: '1a87845988b42de82d4c'});
+
+  request.post({url:'https://github.com/login/oauth/access_token', cliend_id: '1a87845988b42de82d4c', client_secret:process.env.client_secret_oath, code:code}, function(e, r, body) {
+      console.log(body)
+      res.end('posted')
   })
+
+
+  // app.post('https://github.com/login/oauth/access_token',function(req, res) {
+  //   res.send({ code: code , client_id: '1a87845988b42de82d4c'});
+  // })
 })
 
 
