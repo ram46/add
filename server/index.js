@@ -8,7 +8,9 @@ var app = express();
 
 app.use(express.static(__dirname + '/../client'));
 app.use(express.static(__dirname + '/../node_modules'));
-app.use(bodyParser.json())
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 var SERVER_PORT =  process.env.PORT || 3000;
@@ -23,15 +25,18 @@ app.listen(SERVER_PORT, function() {
 
 // https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
 
+
 app.get('/login', function(req, res) {
+  console.log('in login path')
   res.redirect('https://github.com/login/oauth/authorize?client_id=1a87845988b42de82d4c&redirect_uri=https://mvpadd.herokuapp.com/auth');
 })
 
 
 app.get('/auth', function(req, res) {
   var code = req.query.code;
-
-  request.post({url:'https://github.com/login/oauth/access_token', cliend_id: '1a87845988b42de82d4c', client_secret:process.env.client_secret_oath, code:code}, function(e, r, body) {
+  console.log('in auth path and code is', code)
+  request.post({url:'https://github.com/login/oauth/access_token', {form: {cliend_id: '1a87845988b42de82d4c', client_secret:process.env.client_secret_oath, code:code}}, function(e, r, body) {
+      console.log('in post part should get access_token')
       console.log(r)
       res.end('posted')
   })
