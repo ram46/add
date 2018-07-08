@@ -127,6 +127,7 @@ app.get('/stats', function(req, res) {
 
   var stats = []
   Promise.all([helper.aggregator('factorial'), helper.aggregator('basic'), helper.aggregator('power'), helper.aggregator('log'), helper.aggregator('sqrt')])
+
   .then(function(stats) {
         res.send(stats)
     })
