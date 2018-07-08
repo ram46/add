@@ -32,15 +32,30 @@ app.get('/login', function(req, res) {
 })
 
 
+
 app.get('/auth', function(req, res) {
   var code = req.query.code;
   console.log('in auth path and code is', code)
-  request.post({url:'https://github.com/login/oauth/access_token', {form: {cliend_id: '1a87845988b42de82d4c', client_secret:process.env.client_secret_oath, code:code}}, function(e, r, body) {
-      console.log('in post part should get access_token')
+  request.post({
+    url: 'https://github.com/login/oauth/access_token',
+    form: {client_id: '1a87845988b42de82d4c', client_secret:process.env.CLIENT_OAUTH_SECRET, code:code},
+    function(e, r, body) {
       console.log(r)
       res.end('posted')
+    }
   })
+
 })
+
+// app.get('/auth', function(req, res) {
+//   var code = req.query.code;
+//   console.log('in auth path and code is', code)
+//   request.post({url:'https://github.com/login/oauth/access_token', {cliend_id: '1a87845988b42de82d4c', client_secret: process.env.CLIENT_OAUTH_SECRET, code:code}, function(e, r, body) {
+//       console.log('in post part should get access_token')
+//       console.log(r)
+//       res.end('posted')
+//   })
+// })
 
 
 
