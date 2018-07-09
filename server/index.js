@@ -43,11 +43,11 @@ app.get('/auth', function(req, res) {
     form: {client_id: '1a87845988b42de82d4c', client_secret:process.env.CLIENT_OAUTH_SECRET, code:code},
     function(e, r, body) {
       console.log(r)
-      r.end('posted')
+      res.end('posted')
     }
   })
 
-  res.end('done!!')
+  // res.end('done!!')
 })
 
 
