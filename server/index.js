@@ -34,17 +34,20 @@ app.get('/login', function(req, res) {
 
 
 app.get('/auth', function(req, res) {
+
   var code = req.query.code;
   console.log('in auth path and code is', code)
+
   request.post({
     url: 'https://github.com/login/oauth/access_token',
     form: {client_id: '1a87845988b42de82d4c', client_secret:process.env.CLIENT_OAUTH_SECRET, code:code},
     function(e, r, body) {
       console.log(r)
-      res.end('posted')
+      r.end('posted')
     }
   })
 
+  res.end('done!!')
 })
 
 
