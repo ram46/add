@@ -55,65 +55,34 @@ app.get('/auth/protected', function(req, res) {
 // })
 
 
+
 app.get('/auth', function(req, res) {
 
-  var code = req.query.code;
-  console.log('in auth path and code is', code)
+  if (req.query.code) {
+    let options = {
+      url: 'https://github.com/login/oauth/access_token',
+      form: {
+        client_id:'1a87845988b42de82d4c',
+        client_secret:process.env.CLIENT_OAUTH_SECRET,
+        code: req.query.code,
+        redirect_uri: 'https://mvpadd.herokuapp.com/auth/protected',
+      }
+    }
+    request.post(options , function(err, response, body) {
+      console.log('response is', response);
+      console.log('bosy is', body);
+      // res.send(body)
+      //var token = body.split('&')[0].split('=')[1]
 
-  request.post({url:'https://github.com/login/oauth/access_token', form: {client_id: '1a87845988b42de82d4c', client_secret:process.env.CLIENT_OAUTH_SECRET, code:code}}, function(err,httpResponse,body){
-    console.log(httpResponse)
-  })
+      //res.redirect(`https://api.github.com/user?access_token=${token}`)
 
-  // request.post({
-  //   url: 'https://github.com/login/oauth/access_token',
-  //   form: {client_id: '1a87845988b42de82d4c', client_secret:process.env.CLIENT_OAUTH_SECRET, code:code},
-  //   function(e, r, body) {
+    })
+  }
 
-  //     console.log(r)
-
-  //     res.end('posted')
-  //   }
-  // })
+  else {
+    res.send('oh some error!')
+  }
 })
-
-
-
-
-
-// app.get('/auth', function(req, res) {
-//   console.log('********** in auth get', req.query.code)
-//   if (req.query.code) {
-//     let options = {
-//       url: 'https://github.com/login/oauth/access_token',
-//       form: {
-//       client_id:'1a87845988b42de82d4c',
-//       client_secret:process.env.CLIENT_OAUTH_SECRET,
-//       code: req.query.code,
-//       //redirect_uri: 'https://eid-react.herokuapp.com/auth/protected',
-//       // state: req.query.state
-//       }
-//     }
-//     request.post({url:'https://github.com/login/oauth/access_token', form: {
-//       client_id:'1a87845988b42de82d4c',
-//       client_secret:process.env.CLIENT_OAUTH_SECRET,
-//       code: req.query.code,
-//       //redirect_uri: 'https://eid-react.herokuapp.com/auth/protected',
-//       // state: req.query.state
-//       }} , function(err, response, body) {
-//       console.log('response is', response);
-//       console.log('bosy is', body);
-//       res.send(body)
-//       //var token = body.split('&')[0].split('=')[1]
-
-//       //res.redirect(`https://api.github.com/user?access_token=${token}`)
-
-//     })
-//   }
-
-//   else {
-//     res.send('code condition not match')
-//   }
-// })
 
 // ###########
 
